@@ -28,6 +28,7 @@ spectrum analyser designed to make accurate measurements.
 %patch0 -p1
 
 %build
+CXX="%{__cxx}" \
 CXXFLAGS="%{rpmcxxflags}" \
 CPPFLAGS="%{rpmcppflags}" \
 LDFLAGS="%{rpmldflags}" \
