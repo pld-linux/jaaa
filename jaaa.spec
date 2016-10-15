@@ -16,6 +16,7 @@ URL:		http://kokkinizita.linuxaudio.org/linuxaudio/index.html
 BuildRequires:	clthreads-devel
 BuildRequires:	clxclient-devel
 BuildRequires:	fftw3-single-devel
+BuildRequires:	jack-audio-connection-kit-devel
 BuildRequires:	zita-alsa-pcmi-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
