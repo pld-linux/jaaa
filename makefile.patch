@@ -1,21 +1,14 @@
-diff -dur jaaa-0.8.4.orig/source/Makefile jaaa-0.8.4/source/Makefile
---- jaaa-0.8.4.orig/source/Makefile	2013-07-01 12:07:41.000000000 +0200
-+++ jaaa-0.8.4/source/Makefile	2016-10-15 12:26:24.284245116 +0200
-@@ -24,15 +24,14 @@
- LIBDIR = lib$(SUFFIX)
- VERSION = 0.8.4
- CPPFLAGS += -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" -I/usr/include/freetype2
--CXXFLAGS += -O2 -Wall -MMD -MP
+--- jaaa-0.9.2/source/Makefile.orig	2021-09-27 20:01:46.032792774 +0200
++++ jaaa-0.9.2/source/Makefile	2021-09-27 20:28:35.964071029 +0200
+@@ -23,9 +23,8 @@ BINDIR ?= $(PREFIX)/bin
+ 
+ VERSION = 0.9.2
+ CPPFLAGS += -MMD -MP -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" -I.
+-CPPFLAGS += $(shell pkgconf --cflags freetype2)
+-CXXFLAGS += -O2 -Wall
 -CXXFLAGS += -march=native
-+CXXFLAGS += -Wall -MMD -MP
- LDFLAGS += -L/usr/X11R6/$(LIBDIR)
- LDLIBS += -lzita-alsa-pcmi -lclthreads -lclxclient -lpthread -lfftw3f -ljack -lasound -lpthread -lXft -lX11 -lrt
++CPPFLAGS += $(shell pkg-config --cflags xft)
++CXXFLAGS += -Wall
+ LDLIBS += -lzita-alsa-pcmi -lclthreads -lclxclient -lasound -lpthread \
+ 	-lfftw3f -ljack -lXft -lX11 -lrt
  
- 
- JAAA_O = jaaa.o styles.o spectwin.o audio.o rngen.o
- jaaa:	$(JAAA_O)
--	g++ $(LDFLAGS) -o $@ $(JAAA_O) $(LDLIBS)
-+	$(CXX) $(LDFLAGS) -o $@ $(JAAA_O) $(LDLIBS)
- 
- $(JAAA_O):
- -include $(JAAA_O:%.o=%.d)
