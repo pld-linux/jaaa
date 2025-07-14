@@ -29,7 +29,7 @@ sygnałów dźwiękowych, zaprojektowany z myślą o dokładnych pomiarach.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 CXX="%{__cxx}" \
